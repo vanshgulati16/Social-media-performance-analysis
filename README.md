@@ -42,12 +42,12 @@ This project implements an intelligent chat interface that helps users analyze a
    pip install streamlit requests
    ```
 3. Put your credentials in ```.env```
-  ```
-  BASE_API_URL = "BASE_API_URL"
-  LANGFLOW_ID = "LANGFLOW_ID"
-  FLOW_ID = "FLOW_ID"
-  APPLICATION_TOKEN = "APPLICATION_TOKEN"
-  ```
+    ```
+    BASE_API_URL = "BASE_API_URL"
+    LANGFLOW_ID = "LANGFLOW_ID"
+    FLOW_ID = "FLOW_ID"
+    APPLICATION_TOKEN = "APPLICATION_TOKEN"
+    ```
 3. Run the application:
    ```bash
    streamlit run chatbot.py
