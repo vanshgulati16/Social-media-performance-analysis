@@ -1,9 +1,14 @@
 import streamlit as st
-import json
 import requests
+import json
 import logging
 import sys
 from typing import Optional
+import os
+from dotenv import load_dotenv
+
+# Load environment variables
+load_dotenv()
 
 # Setup logging
 logging.basicConfig(
@@ -12,11 +17,17 @@ logging.basicConfig(
     handlers=[logging.StreamHandler(sys.stdout)]
 )
 
-# Configuration
-BASE_API_URL = "https://api.langflow.astra.datastax.com"
-LANGFLOW_ID = "e11cacf4-fca7-43d0-bbf3-2ad2095a7386"
-FLOW_ID = "673f34ba-fbf2-479e-b819-a85e35aea1f2"
-APPLICATION_TOKEN = "AstraCS:CPjaWjTZbAjvkCYcBZMHvZGd:e8edfb581e1fbc1aa95d9df83ec0d86d35216689562af6b3e70d84d9970c6525"  # Replace with your token
+# Configuration from environment variables
+BASE_API_URL = os.getenv("BASE_API_URL")
+LANGFLOW_ID = os.getenv("LANGFLOW_ID")
+FLOW_ID = os.getenv("FLOW_ID")
+APPLICATION_TOKEN = os.getenv("APPLICATION_TOKEN")
+
+# Validate environment variables
+if not all([BASE_API_URL, LANGFLOW_ID, FLOW_ID, APPLICATION_TOKEN]):
+    raise ValueError(
+        "Missing required environment variables. Please check your .env file"
+    )
 
 TWEAKS = {
     "ChatInput-Anfqy": {},
@@ -32,7 +43,10 @@ TWEAKS = {
     "GoogleGenerativeAIModel-lBYXt": {}
 }
 
-def run_flow(message: str, endpoint: str = FLOW_ID, tweaks: Optional[dict] = TWEAKS) -> dict:
+def run_flow(message: str, endpoint: str = FLOW_ID, tweaks: Optional[dict] = None) -> dict:
+    """
+    Run a flow with a given message and optional tweaks.
+    """
     api_url = f"{BASE_API_URL}/lf/{LANGFLOW_ID}/api/v1/run/{endpoint}"
     
     payload = {
@@ -55,7 +69,6 @@ def run_flow(message: str, endpoint: str = FLOW_ID, tweaks: Optional[dict] = TWE
         logging.info(f"Raw response: {response.text}")
         json_response = response.json()
         
-        # Extract message from the nested response structure
         if json_response.get("outputs") and json_response["outputs"][0].get("outputs"):
             message = json_response["outputs"][0]["outputs"][0]["results"]["message"]["text"]
             return {"output": message}
