@@ -18,10 +18,15 @@ logging.basicConfig(
 )
 
 # Configuration from environment variables
-BASE_API_URL = os.getenv("BASE_API_URL")
-LANGFLOW_ID = os.getenv("LANGFLOW_ID")
-FLOW_ID = os.getenv("FLOW_ID")
-APPLICATION_TOKEN = os.getenv("APPLICATION_TOKEN")
+# BASE_API_URL = os.getenv("BASE_API_URL")
+# LANGFLOW_ID = os.getenv("LANGFLOW_ID")
+# FLOW_ID = os.getenv("FLOW_ID")
+# APPLICATION_TOKEN = os.getenv("APPLICATION_TOKEN")
+
+BASE_API_URL = "https://api.langflow.astra.datastax.com"
+LANGFLOW_ID = "e11cacf4-fca7-43d0-bbf3-2ad2095a7386"
+FLOW_ID = "673f34ba-fbf2-479e-b819-a85e35aea1f2"
+APPLICATION_TOKEN = "AstraCS:CPjaWjTZbAjvkCYcBZMHvZGd:e8edfb581e1fbc1aa95d9df83ec0d86d35216689562af6b3e70d84d9970c6525"
 
 # Validate environment variables
 if not all([BASE_API_URL, LANGFLOW_ID, FLOW_ID, APPLICATION_TOKEN]):
