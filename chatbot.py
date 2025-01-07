@@ -5,10 +5,10 @@ import logging
 import sys
 from typing import Optional
 import os
-from dotenv import load_dotenv
+# from dotenv import load_dotenv
 
 # Load environment variables
-load_dotenv()
+# load_dotenv()
 
 # Setup logging
 logging.basicConfig(
