@@ -79,7 +79,7 @@ def run_flow(message: str, endpoint: str = FLOW_ID, tweaks: Optional[dict] = Non
 
 def main():
     # Configure page and styling
-    st.set_page_config(page_title="AI Chat Assistant", page_icon="💬", layout="centered")
+    st.set_page_config(page_title="Social Buzz Analyst", page_icon="💬", layout="centered")
 
     # Custom CSS for complete dark mode styling
     st.markdown("""
@@ -142,7 +142,7 @@ def main():
     """, unsafe_allow_html=True)
 
     # Custom header with gradient
-    st.markdown('<div class="main-header"><h1>Social Media Assistant 💬</h1></div>', unsafe_allow_html=True)
+    st.markdown('<div class="main-header"><h1>Social Buzz Analyst 💬</h1></div>', unsafe_allow_html=True)
 
     # Initialize chat history
     if "messages" not in st.session_state:

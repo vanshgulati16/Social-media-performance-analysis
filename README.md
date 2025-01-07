@@ -1,4 +1,4 @@
-# Social Media Performance Analysis 📊 
+# Social Buzz Analyst 📊 
 
 An AI-powered chatbot that provides detailed social media analytics and performance insights using natural language processing.
 
@@ -41,6 +41,13 @@ This project implements an intelligent chat interface that helps users analyze a
    ```bash
    pip install streamlit requests
    ```
+3. Put your credentials in ```.env```
+  ```
+  BASE_API_URL = "BASE_API_URL"
+  LANGFLOW_ID = "LANGFLOW_ID"
+  FLOW_ID = "FLOW_ID"
+  APPLICATION_TOKEN = "APPLICATION_TOKEN"
+  ```
 3. Run the application:
    ```bash
    streamlit run chatbot.py
